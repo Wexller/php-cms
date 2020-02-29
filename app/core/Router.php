@@ -7,8 +7,7 @@ class Router {
   protected $routes = [];
   protected $params = [];
 
-  function __construct()
-  {
+  function __construct() {
     $arr = require_once 'app/config/routes.php';
     foreach ($arr as $key => $val) {
       $this->add($key, $val);
