@@ -15,13 +15,30 @@ class View {
   }
 
   public function render($title, $vars = []) {
-    if (file_exists('app/views/' . $this->path . '.php')) {
+    extract($vars);
+    $path = 'app/views/' . $this->path . '.php';
+    if (file_exists($path)) {
       ob_start();
-      require_once  'app/views/' . $this->path . '.php';
+      require_once $path;
       $content = ob_get_clean();
       require_once 'app/views/layouts/' . $this->layout . '.php';
     } else {
-      echo 'View not found' . $this->path . '.php';
+      echo "View not found $path";
+    }
+  }
+
+  public function redirect($url) {
+    header("location: $url");
+    exit;
+  }
+
+  public static function errorCode($code) {
+    http_response_code($code);
+    $path = 'app/views/errors/' . $code . '.php';
+    if (file_exists($path)) {
+      require_once $path;
+    } else {
+      echo "View not found $path";
     }
   }
 }
