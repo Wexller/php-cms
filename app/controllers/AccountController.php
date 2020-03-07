@@ -6,6 +6,9 @@ use app\core\Controller;
 
 Class AccountController extends Controller {
   public function loginAction() {
+    if (!empty($_POST)) {
+      $this->view->location('/');
+    }
     $this->view->render('Sign-in');
   }
 

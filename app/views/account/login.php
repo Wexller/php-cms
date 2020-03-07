@@ -1,8 +1,8 @@
 <h2>Login</h2>
-<form action="">
+<form action="/account/login" method="post">
   <p>Login</p>
-  <input type="text">
+  <input type="text" name="login">
   <p>Password</p>
-  <input type="password" name="" id="">
-  <button>Sign-in</button>
+  <input type="password" name="password" id="">
+  <button type="submit" name="enter">Sign-in</button>
 </form>
